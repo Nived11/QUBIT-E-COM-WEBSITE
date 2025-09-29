@@ -1,0 +1,27 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+/* @import "tw-animate-css"; */
+
+/* optional: set default body styles */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --link-color: #1a0dab;
+  --link-hover-color: #551a8b;
+  --blue1:#140b5b;
+  --blue2:#102362;
+  background-color: #e6ebff;
+
+}
+.logo {
+  background: linear-gradient(45deg, #2563eb, #4f46e5);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
