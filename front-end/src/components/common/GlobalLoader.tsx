@@ -1,3 +1,4 @@
+import AppName from "./AppName";
 export default function GlobalLoader() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
@@ -67,10 +68,10 @@ export default function GlobalLoader() {
           <div className="absolute inset-0 rounded-full border border-blue-300 opacity-40 animate-ping"></div>
         </div>
         
-        {/* Qubit branding */}
+        {/* Qubitx branding */}
         <div className="space-y-3">
           <h2 className="text-3xl font-bold text-slate-700 tracking-wide">
-            <span className="text-blue-600">Qubit</span>
+            <span className="text-blue-600">{AppName}</span>
           </h2>
           <div className="flex justify-center space-x-1">
             {[0, 1, 2].map((i) => (

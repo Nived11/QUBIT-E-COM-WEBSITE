@@ -1,3 +1,3 @@
-const AppName = "Qubix";
+const AppName = "Qubitx";
 
 export default AppName;
