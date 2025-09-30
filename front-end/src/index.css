@@ -1,7 +1,9 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-/* @import "tw-animate-css"; */
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
 
 /* optional: set default body styles */
 :root {
@@ -11,7 +13,8 @@
   --link-hover-color: #551a8b;
   --blue1:#140b5b;
   --blue2:#102362;
-  background-color: #e6ebff;
+  /* background-color: #e6ebff; */
+  background-color:rgb(248, 251, 255);
 
 }
 .logo {

@@ -1,9 +1,6 @@
 import { Route } from "react-router-dom";
 import PublicLayout from "../layouts/PublicLayout";
-import Home from "../pages/user/Home";
-import Shop from "../pages/user/Shop";
-import Cart from "../pages/user/Cart";
-import NotFound from "../pages/user/NotFound";
+import {Home,Shop,Cart,NotFound} from "../pages/user";
 
 const PublicRoutes = () => {
   return (
