@@ -1,3 +1,4 @@
+import AppName from "./AppName";
 import { FiUser, FiShoppingCart, FiSearch } from "react-icons/fi";
 import { MdSell } from "react-icons/md";
 
@@ -7,7 +8,7 @@ const Header = () => {
       <div className="px-4 py-3 sm:py-4">
         <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 sm:gap-4">
           <div className="text-3xl sm:text-3xl md:text-3xl font-bold text-blue-700 cursor-pointer">
-            Qubit
+            {AppName}
           </div>
           <div className="relative w-full sm:w-auto sm:flex-1 sm:max-w-md order-3 sm:order-2">
             <FiSearch

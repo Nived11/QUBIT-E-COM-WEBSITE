@@ -1,4 +1,4 @@
-// src/components/common/Footer.tsx
+import AppName from "./AppName";
 import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="transition-transform duration-300 hover:-translate-y-1">
             <h3 className="text-xl font-bold pb-2 mb-3 border-b-2 border-blue-400 inline-block">
-              Qubit
+              {AppName}
             </h3>
             <p className="text-gray-300">
               Your one-stop shop for electronics and gadgets. Quality products, competitive prices, and excellent service.
@@ -70,7 +70,7 @@ const Footer = () => {
 
         {/* Bottom */}
         <div className="mt-8 pt-8 border-t border-blue-700 text-center text-sm text-gray-300">
-          <p>© 2025 Qubit. All rights reserved.</p>
+          <p>© 2025 {AppName}. All rights reserved.</p>
         </div>
       </div>
     </footer>
