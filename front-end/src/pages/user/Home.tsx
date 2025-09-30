@@ -1,4 +1,4 @@
-import {Categories,Banners ,ProductList} from "../../features/users/Home"
+import {Categories,Banners ,ProductList,ProductCategories} from "../../features/users/Home"
 
 export default function Home() {
   return (
@@ -7,6 +7,7 @@ export default function Home() {
       <Categories />
       <Banners />
       <ProductList />
+      <ProductCategories/>
       
     </div>
   );

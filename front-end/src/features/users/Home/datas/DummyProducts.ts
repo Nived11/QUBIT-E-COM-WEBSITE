@@ -9,7 +9,7 @@ export const products = [
     originalPrice: 10625,
     discount: 19,
     image: iphone,
-    category: "tablet"
+    category: "Mobiles"
   },
   {
     id: 2,
@@ -49,7 +49,7 @@ export const products = [
     originalPrice: 25627,
     discount: 40,
     image: iphone,
-    category: "speakers"
+    category: "earphones"
   },
   {
     id: 6,
@@ -59,7 +59,7 @@ export const products = [
     originalPrice: 29900,
     discount: 17,
     image: iphone,
-    category: "Audio"
+    category: "earphones"
   },
   {
     id: 7,
@@ -69,7 +69,7 @@ export const products = [
     originalPrice: 129900,
     discount: 15,
     image: iphone,
-    category: "tablet"
+    category: "earphones"
   },
   {
     id: 8,
@@ -79,7 +79,7 @@ export const products = [
     originalPrice: 99900,
     discount: 10,
     image:iphone,
-    category: "tablet"
+    category: "earphones"
   },
   {
     id: 9,
@@ -89,7 +89,7 @@ export const products = [
     originalPrice: 89900,
     discount: 11,
     image: iphone,
-    category: "Wearables"
+    category: "Mobiles"
   },
   {
     id: 10,
@@ -99,7 +99,7 @@ export const products = [
     originalPrice: 59900,
     discount: 17,
     image: iphone,
-    category: "Cameras"
+    category: "Mobiles"
   },
   {
     id: 11,
@@ -109,7 +109,7 @@ export const products = [
     originalPrice: 279900,
     discount: 11,
     image: iphone,
-    category: "Cameras"
+    category: "Mobiles"
   },
   {
     id: 12,
@@ -119,7 +119,7 @@ export const products = [
     originalPrice: 39900,
     discount: 13,
     image:iphone,
-    category: "Gaming"
+    category: "Laptops"
   }
 ];
 

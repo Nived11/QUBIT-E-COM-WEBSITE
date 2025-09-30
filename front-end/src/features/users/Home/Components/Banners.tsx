@@ -67,11 +67,9 @@ const Banners = () => {
 
   return (
     <div className="relative mt-6 overflow-hidden rounded-lg">
-      {/* Arrows */}
       <NextArrow onClick={() => sliderRef.current?.slickNext()} />
       <PrevArrow onClick={() => sliderRef.current?.slickPrev()} />
 
-      {/* Slider */}
       <Slider ref={sliderRef} {...settings}>
         {banners.map((banner, idx) => (
           <div
