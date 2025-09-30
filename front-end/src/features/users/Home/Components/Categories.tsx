@@ -22,7 +22,7 @@ const Categories = () => {
       key={idx}
       className="flex flex-col items-center text-center flex-shrink-0 w-16 sm:w-18 md:w-20 lg:w-20"
     >
-      <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 flex items-center justify-center rounded-full border-2 border-blue-500 p-2">
+      <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 flex items-center justify-center rounded-full border-2 border-blue-600 p-2">
         <img
           src={cat.image}
           alt={cat.name}

@@ -7,7 +7,7 @@ const Header = () => {
     <header className="w-full bg-white shadow-md sticky top-0 z-50">
       <div className="px-4 py-3 sm:py-4">
         <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 sm:gap-4">
-          <div className="logo text-3xl sm:text-3xl md:text-3xl font-bold text-blue-700 cursor-pointer">
+          <div className="logo text-3xl sm:text-3xl md:text-3xl font-bold text-blue-600 cursor-pointer">
             {AppName}
           </div>
           <div className="relative w-full sm:w-auto sm:flex-1 sm:max-w-md order-3 sm:order-2">
@@ -18,7 +18,7 @@ const Header = () => {
             <input
               type="text"
               placeholder="Search..."
-              className="placeholder:text-blue-700 w-full rounded-full border-2 border-blue-500 text-blue-800 py-2 pl-10 pr-4 focus:outline-none focus:ring-1 focus:ring-blue-300 text-sm sm:text-base md:text-base md:py-1.5"
+              className="placeholder:text-blue-700 w-full rounded-full border-2 border-blue-600 text-blue-800 py-2 pl-10 pr-4 focus:outline-none focus:ring-1 focus:ring-blue-300 text-sm sm:text-base md:text-base md:py-1.5"
             />
           </div>
 
