@@ -22,7 +22,7 @@ const Header = () => {
             />
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3 md:gap-5 order-2 sm:order-3">
+          <div className="flex items-center gap-5 sm:gap-4 md:gap-6 order-2 sm:order-3">
             <button className="group relative flex items-center gap-1 sm:gap-2 px-3 py-1.5  sm:px-4 py-1 sm:py-1.5 md:px-3 md:py-1 rounded-full text-white font-medium shadow-md bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 transform transition hover:scale-105 text-xs sm:text-sm md:text-base overflow-hidden">
               <span className="relative z-20 flex items-center gap-1">
                 <MdSell  className="sm:!w-4 sm:!h-4 md:!w-4 md:!h-4" />

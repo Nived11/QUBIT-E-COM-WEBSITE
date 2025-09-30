@@ -16,7 +16,7 @@ const categories = [
 
 const Categories = () => {
   return (
-    <div className="px-2 sm:px-0 md:px-4 flex items-center gap-4 sm:gap-5 md:gap-6 lg:gap-11 xl:gap-12 overflow-x-auto scrollbar-hide">
+    <div className="  flex items-center gap-4 sm:gap-5 md:gap-6 lg:gap-10 xl:gap-12 overflow-x-auto scrollbar-hide">
   {categories.map((cat, idx) => (
     <div
       key={idx}
@@ -29,7 +29,7 @@ const Categories = () => {
           className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-12 lg:h-12 object-contain"
         />
       </div>
-      <p className="text-xs sm:text-sm md:text-sm lg:text-sm font-semibold text-[--blue2] mt-2 truncate">
+      <p className="text-xs sm:text-sm md:text-sm lg:text-sm font-semibold text-[--blue2] mt-2 ml-1 truncate">
         {cat.name}
       </p>
     </div>

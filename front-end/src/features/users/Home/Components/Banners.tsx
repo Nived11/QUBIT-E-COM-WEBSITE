@@ -54,29 +54,32 @@ const PrevArrow = ({ onClick }: any) => (
     speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: true, 
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
     pauseOnHover: false,  
     pauseOnFocus: false, 
     draggable: false, 
     swipe: true, 
   };
+import  { useRef } from "react";
+
 const Banners = () => {
+  const sliderRef = useRef<Slider | null>(null);
+
   return (
-    <div className="mt-6 relative overflow-hidden rounded-lg">
-        <Slider {...settings}>
-          {banners.map((banner, idx) => (
-            <div key={idx} className="relative rounded-lg">
-              <img
-                src={banner.image}
-                alt={banner.name}
-                className="w-full rounded-lg object-cover"
-              />
-            </div>
-          ))}
-        </Slider>
-      </div>
+    <div className="relative mt-6 overflow-hidden rounded-lg">
+      <NextArrow onClick={() => sliderRef.current?.slickNext()} />
+      <PrevArrow onClick={() => sliderRef.current?.slickPrev()} />
+      <Slider ref={sliderRef} {...settings}>
+        {banners.map((banner, idx) => (
+          <div key={idx} className="relative rounded-lg">
+            <img
+              src={banner.image}
+              alt={banner.name}
+              className="w-full rounded-lg object-cover"
+            />
+          </div>
+        ))}
+      </Slider>
+    </div>
   );
 };
 
