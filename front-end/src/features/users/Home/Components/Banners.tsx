@@ -1,4 +1,5 @@
 import Slider from "react-slick";
+import  { useRef } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
  const banners = [
@@ -59,22 +60,28 @@ const PrevArrow = ({ onClick }: any) => (
     draggable: false, 
     swipe: true, 
   };
-import  { useRef } from "react";
+
 
 const Banners = () => {
   const sliderRef = useRef<Slider | null>(null);
 
   return (
     <div className="relative mt-6 overflow-hidden rounded-lg">
+      {/* Arrows */}
       <NextArrow onClick={() => sliderRef.current?.slickNext()} />
       <PrevArrow onClick={() => sliderRef.current?.slickPrev()} />
+
+      {/* Slider */}
       <Slider ref={sliderRef} {...settings}>
         {banners.map((banner, idx) => (
-          <div key={idx} className="relative rounded-lg">
+          <div
+            key={idx}
+            className="relative w-full h-[95px] sm:h-[150px] md:h-[200px] lg:h-[250px]  xl:h-[350px]"
+          >
             <img
               src={banner.image}
               alt={banner.name}
-              className="w-full rounded-lg object-cover"
+              className="w-full h-full rounded-lg object-cover"
             />
           </div>
         ))}
@@ -82,5 +89,6 @@ const Banners = () => {
     </div>
   );
 };
+
 
 export default Banners;
