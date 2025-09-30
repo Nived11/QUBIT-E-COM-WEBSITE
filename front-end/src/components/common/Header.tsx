@@ -7,18 +7,18 @@ const Header = () => {
     <header className="w-full bg-white shadow-md sticky top-0 z-50">
       <div className="px-4 py-3 sm:py-4">
         <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 sm:gap-4">
-          <div className="logo text-3xl sm:text-3xl md:text-3xl font-bold text-blue-600 cursor-pointer">
+          <div className="logo text-3xl sm:text-3xl md:text-3xl font-bold text-blue-800 cursor-pointer">
             {AppName}
           </div>
           <div className="relative w-full sm:w-auto sm:flex-1 sm:max-w-md order-3 sm:order-2">
             <FiSearch
               size={16}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-600"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-800"
             />
             <input
               type="text"
               placeholder="Search..."
-              className="placeholder:text-blue-700 w-full rounded-full border-2 border-blue-600 text-blue-800 py-2 pl-10 pr-4 focus:outline-none focus:ring-1 focus:ring-blue-300 text-sm sm:text-base md:text-base md:py-1.5"
+              className="placeholder:text-blue-800 w-full rounded-full border-2 border-blue-800 text-blue-800 py-2 pl-10 pr-4 focus:outline-none focus:ring-1 focus:ring-blue-300 text-sm sm:text-base md:text-base md:py-1.5"
             />
           </div>
 
@@ -28,7 +28,7 @@ const Header = () => {
                 <MdSell  className="sm:!w-4 sm:!h-4 md:!w-4 md:!h-4" />
                 <p className="text-xs sm:text-xs md:text-sm  ">Sell</p>
               </span>
-              <span className="absolute inset-0 z-10 bg-gradient-to-r from-blue-500 to-blue-700 transform -translate-x-full group-hover:translate-x-0 transition-all duration-500"></span>
+              <span className="absolute inset-0 z-10 bg-gradient-to-r from-blue-600 to-blue-800 transform -translate-x-full group-hover:translate-x-0 transition-all duration-500"></span>
             </button>
 
             <button className="relative p-2 sm:p-2.5 md:p-3 rounded-full hover:bg-blue-100 transform transition hover:scale-105">
@@ -40,7 +40,7 @@ const Header = () => {
               </span>
             </button>
 
-            <button className="p-2.5 sm:p-3 md:p-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 shadow-md border-2 border-white hover:opacity-90 transform transition hover:scale-105">
+            <button className="p-2.5 sm:p-3 md:p-3 rounded-full bg-gradient-to-r from-blue-800 to-blue-600 shadow-md border-2 border-white hover:opacity-90 transform transition hover:scale-105">
               <FiUser  className="text-white text-xl sm:text-xl md:text-xl" />
             </button>
           </div>

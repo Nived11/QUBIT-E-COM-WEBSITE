@@ -23,7 +23,7 @@ const ProductList = () => {
 
       {/* Product Grid - Responsive with smaller mobile cards */}
       <div className="h-auto w-full py-4">
-        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4 md:gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-4 md:gap-3">
           {products.map((product) => (
             <div
               key={product.id} 
@@ -43,12 +43,10 @@ const ProductList = () => {
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-0.5 sm:mb-1">
                   <h3 className="text-[10px] sm:text-sm font-semibold text-gray-800 line-clamp-1 mb-0.5 sm:mb-0">{product.name}</h3>
                   <span className="bg-blue-100 text-blue-800 text-[8px] sm:text-xs font-medium px-1 sm:px-1.5 py-0.5 rounded whitespace-nowrap self-start">
-                    {product.category}
+                    {product.brand}
                   </span>
                 </div>
-                <div className="mb-0.5 sm:mb-1 flex items-center">
-                  <span className="text-[8px] sm:text-xs text-gray-600">{product.brand}</span>
-                </div>
+                
                 <div className="price-display flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-0.5 sm:gap-1">
                   <span className="text-[10px] sm:text-sm font-bold text-gray-900">₹{product.price}</span>
                   <div className="flex items-center gap-1">
