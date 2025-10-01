@@ -40,34 +40,34 @@ const DetailsSection = ({ product }: DetailsSectionProps) => {
         </h3>
         <div className="space-y-3">
           <div className="flex border-b border-gray-200 pb-2">
-            <span className="font-semibold text-gray-700 w-40">
+            <span className="font-semibold text-gray-800 w-40">
               Model Number:
             </span>
-            <span className="text-gray-600">PRD-{product.id}-2024</span>
+            <span className="text-gray-700">PRD-{product.id}-2024</span>
           </div>
           <div className="flex border-b border-gray-200 pb-2">
-            <span className="font-semibold text-gray-700 w-40">Material:</span>
-            <span className="text-gray-600">Premium Quality</span>
+            <span className="font-semibold text-gray-800 w-40">Material:</span>
+            <span className="text-gray-700">Premium Quality</span>
           </div>
           <div className="flex border-b border-gray-200 pb-2">
-            <span className="font-semibold text-gray-700 w-40">Color:</span>
-            <span className="text-gray-600">As shown in image</span>
+            <span className="font-semibold text-gray-800 w-40">Color:</span>
+            <span className="text-gray-700">As shown in image</span>
           </div>
           <div className="flex border-b border-gray-200 pb-2">
-            <span className="font-semibold text-gray-700 w-40">Weight:</span>
-            <span className="text-gray-600">500g</span>
+            <span className="font-semibold text-gray-800 w-40">Weight:</span>
+            <span className="text-gray-700">500g</span>
           </div>
           <div className="flex border-b border-gray-200 pb-2">
-            <span className="font-semibold text-gray-700 w-40">
+            <span className="font-semibold text-gray-800 w-40">
               Dimensions:
             </span>
-            <span className="text-gray-600">20 x 15 x 10 cm</span>
+            <span className="text-gray-700">20 x 15 x 10 cm</span>
           </div>
           <div className="flex pb-2">
-            <span className="font-semibold text-gray-700 w-40">
+            <span className="font-semibold text-gray-800 w-40">
               Country of Origin:
             </span>
-            <span className="text-gray-600">India</span>
+            <span className="text-gray-700">India</span>
           </div>
         </div>
       </div>
@@ -102,7 +102,7 @@ const DetailsSection = ({ product }: DetailsSectionProps) => {
               <p className="font-semibold text-gray-900">
                 1 Year Manufacturer Warranty
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-700">
                 Covers manufacturing defects
               </p>
             </div>
@@ -125,7 +125,7 @@ const DetailsSection = ({ product }: DetailsSectionProps) => {
               <p className="font-semibold text-gray-900">
                 7 Days Replacement Policy
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-700">
                 Easy returns and replacements
               </p>
             </div>
@@ -146,7 +146,7 @@ const DetailsSection = ({ product }: DetailsSectionProps) => {
             </svg>
             <div>
               <p className="font-semibold text-gray-900">Customer Support</p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-700">
                 24/7 dedicated support team
               </p>
             </div>
@@ -157,7 +157,7 @@ const DetailsSection = ({ product }: DetailsSectionProps) => {
         <h3 className="text-xl font-bold text-gray-900 mb-3 border-b-2 border-blue-800 pb-2">
           Product Description
         </h3>
-        <p className="text-gray-700 leading-relaxed">
+        <p className="text-gray-800 leading-relaxed">
           Experience premium quality with this exceptional product. Designed
           with attention to detail and built to last, this product offers
           outstanding performance and reliability. Perfect for everyday use, it
@@ -172,7 +172,7 @@ const DetailsSection = ({ product }: DetailsSectionProps) => {
         <h3 className="text-lg font-bold text-blue-900 mb-3">
           Why Choose This Product?
         </h3>
-        <ul className="space-y-2 text-gray-700">
+        <ul className="space-y-2 text-gray-800 ">
           <li className="flex items-start gap-2">
             <span className="text-blue-800 mt-1">•</span>
             <span>High-quality construction for long-lasting durability</span>

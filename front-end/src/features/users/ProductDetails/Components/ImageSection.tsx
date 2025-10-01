@@ -63,7 +63,7 @@ const ImageSection = ({ product }: ImageSectionProps) => {
         </div>
 
         {/* Thumbnail Images */}
-        <div className="flex gap-6 sm:gap-10 overflow-x-auto scrollbar-hide mb-6 flex-shrink-0 px-4 ">
+        <div className="flex gap-6 sm:gap-10 overflow-x-auto scrollbar-hide mb-8 flex-shrink-0 px-4 ">
           {productImages.map((img, index) => (
             <button
               key={index}
@@ -78,7 +78,7 @@ const ImageSection = ({ product }: ImageSectionProps) => {
         </div>
 
         {/* Action Buttons */}
-        <div className="grid grid-cols-2 gap-3 flex-shrink-0 px-4">
+        <div className="grid grid-cols-2 gap-3 flex-shrink-0 px-4 mb-6">
           <button className="text-sm sm:text-base bg-gradient-to-r from-blue-800 to-blue-900 text-white py-3 rounded-md font-semibold hover:opacity-90 transition shadow-[0_4px_10px_rgba(0,0,0,0.3)]">
            <span>🛒</span> ADD TO CART
           </button>
