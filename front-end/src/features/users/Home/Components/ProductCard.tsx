@@ -1,12 +1,13 @@
-import React from "react";
 import { type Product } from "../types";
+import { Link } from "react-router-dom";
 
-interface ProductCardProps {
-  product: Product;
-}
+// interface ProductCardProps {
+//   product: Product;
+// }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard = ({ product }: { product: Product }) => {
   return (
+      <Link to={`/product/${product.id}`}>
     <div
       key={product.id}
       className="bg-white rounded-md sm:rounded-lg shadow-md sm:shadow-lg cursor-pointer hover:shadow-xl transition-shadow flex flex-col"
@@ -53,6 +54,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 
