@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { type Product } from "../../Home/types";
+import BackButton from "../../../../components/common/BackButton";
 import { useSwipeable } from "react-swipeable";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 interface ImageSectionProps {
   product: Product;
@@ -10,6 +12,7 @@ interface ImageSectionProps {
 const ImageSection = ({ product }: ImageSectionProps) => {
   const productImages = [product.image, product.image, product.image, product.image, product.image];
   const [selectedImage, setSelectedImage] = useState(0);
+  const navigate = useNavigate();
 
   // Auto-slide effect
   useEffect(() => {
@@ -36,13 +39,16 @@ const ImageSection = ({ product }: ImageSectionProps) => {
 
   return (
     <div className=" lg:sticky lg:top-[6rem] lg:h-[calc(90vh-2rem)] lg:self-start">
+      <BackButton/>
       <div className="flex flex-col">
+        
         {/* Main Image with Navigation */}
         <div className="relative mb-4 flex-shrink-0" {...handlers}>
+          
           <img
             src={productImages[selectedImage]}
             alt={product.name}
-            className="w-full h-[] sm:h-[430px] object-contain   bg-white "
+            className="w-full  sm:h-[400px] object-contain   bg-white "
           />
 
           {/* Previous Button */}
@@ -79,7 +85,9 @@ const ImageSection = ({ product }: ImageSectionProps) => {
 
         {/* Action Buttons */}
         <div className="grid grid-cols-2 gap-3 flex-shrink-0 px-4 mb-6">
-          <button className="text-sm sm:text-base bg-gradient-to-r from-blue-800 to-blue-900 text-white py-3 rounded-md font-semibold hover:opacity-90 transition shadow-[0_4px_10px_rgba(0,0,0,0.3)]">
+          <button
+            onClick={() => navigate("/cart")}
+           className="text-sm sm:text-base bg-gradient-to-r from-blue-800 to-blue-900 text-white py-3 rounded-md font-semibold hover:opacity-90 transition shadow-[0_4px_10px_rgba(0,0,0,0.3)]">
            <span>🛒</span> ADD TO CART
           </button>
           <button className="text-sm sm:text-base bg-gradient-to-r from-blue-800 to-blue-900 text-white py-3 rounded-md font-semibold hover:opacity-90 transition shadow-[0_4px_10px_rgba(0,0,0,0.3)]">

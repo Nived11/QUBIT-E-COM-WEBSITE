@@ -16,8 +16,9 @@ const ProductDetails = () => {
   return (
     <div className="min-h-screen ">
       <div className="container mx-auto ">
+        
         <div className="grid lg:grid-cols-2 gap-8">
-
+   
          <ImageSection product={product} />
 
           <DetailsSection product={product} />

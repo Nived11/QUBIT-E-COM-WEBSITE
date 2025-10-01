@@ -1,5 +1,6 @@
 import { type Product } from "../../Home/types";
 
+
 interface DetailsSectionProps {
   product: Product;
 }
@@ -7,6 +8,7 @@ interface DetailsSectionProps {
 const DetailsSection = ({ product }: DetailsSectionProps) => {
   return (
     <div className="space-y-6 px-4 py-4 ">
+      
       <span className="inline-flex items-center justify-center px-3 py-0.5 text-[15px] font-semibold text-blue-800  bg-blue-200 rounded-full">
         {product.brand}
       </span>
@@ -24,7 +26,7 @@ const DetailsSection = ({ product }: DetailsSectionProps) => {
           </div>
         <div className=" flex items-baseline gap-4">
           <span className="text-4xl font-bold">₹{product.price}</span>
-          <div className="text-lg line-through  text-red-400">
+          <div className="text-lg line-through  text-red-500">
             ₹{(product.price * 1.3).toFixed(2)}
           </div>
          
