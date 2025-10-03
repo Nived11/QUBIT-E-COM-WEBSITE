@@ -39,7 +39,9 @@ const ImageSection = ({ product }: ImageSectionProps) => {
 
   return (
     <div className=" lg:sticky lg:top-[6rem] lg:h-[calc(90vh-2rem)] lg:self-start">
-      <BackButton/>
+  
+        <BackButton/>
+      
       <div className="flex flex-col">
         
         {/* Main Image with Navigation */}
