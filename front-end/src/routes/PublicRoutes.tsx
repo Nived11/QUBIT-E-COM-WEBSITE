@@ -1,7 +1,7 @@
 import { Route } from "react-router-dom";
 import PublicLayout from "../layouts/PublicLayout";
 import ProfileLayout from "../layouts/ProfileLayout";
-import { Home, ProductDetails, NotFound, Cart , ProfileInfo} from "../pages/user";
+import { Home, ProductDetails, NotFound, Cart, ProfileInfo, Orders, UserAddress, SellProducts,} from "../pages/user";
 
 const PublicRoutes = () => {
   return (
@@ -13,7 +13,10 @@ const PublicRoutes = () => {
 
       {/* Profile Section */}
       <Route path="/profile" element={<ProfileLayout />}>
-        <Route index element={<ProfileInfo />} /> 
+        <Route index element={<ProfileInfo />} />
+        <Route path="orders" element={<Orders />} /> 
+        <Route path="user-address" element={<UserAddress />} /> 
+        <Route path="sell-products" element={<SellProducts />} /> 
       </Route>
     </Route>
   );

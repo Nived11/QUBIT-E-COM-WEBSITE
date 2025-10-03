@@ -85,7 +85,7 @@ const Header = () => {
                     onClick={handleProfile}
                     className="group relative w-full px-4 py-2 mb-1 rounded-tl-[30px] border border-l-[4px] border-r-[4px] text-left overflow-hidden"
                   >
-                    <span className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+                    <span className="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-800 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
                     <span className="relative z-10 flex items-center gap-2 group-hover:text-white transition-colors duration-400">
                       <FiUser className="text-lg" />
                       <span>Profile</span>
@@ -96,7 +96,7 @@ const Header = () => {
                     onClick={handleLogout}
                     className="group relative w-full px-4 py-2 rounded-br-[30px] border border-l-[4px] border-r-[4px] text-left overflow-hidden"
                   >
-                    <span className="absolute inset-0 bg-gradient-to-r from-red-400 to-red-500 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+                    <span className="absolute inset-0 bg-gradient-to-r from-red-300 to-red-700 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
                     <span className="relative z-10 flex items-center gap-2 group-hover:text-white transition-colors duration-400">
                       <svg
                         className="w-5 h-5"

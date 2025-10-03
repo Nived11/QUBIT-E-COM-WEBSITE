@@ -1,111 +1,69 @@
-import { Outlet, NavLink, useNavigate } from "react-router-dom";
-import { FiHome, FiShoppingBag, FiUser, FiMapPin, FiPackage, FiLogOut } from "react-icons/fi";
+import { Outlet } from "react-router-dom";
+import { FiMenu, FiX } from "react-icons/fi";
+import { useState, useEffect } from "react";
+import SidebarContent from "../components/common/SidebarContent";
 
 const ProfileLayout = () => {
-  const navigate = useNavigate();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleLogout = () => {
-    // clear auth token or user state
-    localStorage.removeItem("token"); 
-    navigate("/"); // redirect to home after logout
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      {/* Sidebar */}
-      <aside className="w-[280px] flex-shrink-0 bg-gradient-to-br from-[#102362] to-[#140b5b]  p-6 shadow-xl relative overflow-hidden">
-        {/* Diagonal slash pattern overlay */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `repeating-linear-gradient(
-              45deg,
-              transparent,
-              transparent 10px,
-              rgba(255, 255, 255, 0.27) 10px,
-              rgba(255, 255, 255, 0.24) 20px
-            )`
-          }}></div>
-        </div>
-        
-        {/* Decorative circles in background */}
-        <div className="absolute top-10 right-10 w-40 h-40 bg-blue-700 rounded-full opacity-80 blur-3xl"></div>
-        <div className="absolute bottom-20 left-5 w-32 h-32 bg-blue-600 rounded-full opacity-10 blur-2xl"></div>
-        <div className="absolute top-1/2 left-1/2 w-60 h-60 bg-indigo-600 rounded-full opacity-5 blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-        
-        {/* Profile Section */}
-        <div className="relative z-10 flex flex-col items-center mb-8 mt-4">
-          <div className="w-25 h-25 bg-white rounded-full flex items-center justify-center shadow-lg mb-4">
-            <img 
-              src="https://img.freepik.com/premium-photo/cartoon-logo-penguin_643934-1347.jpg" 
-              alt="Profile" 
-              className="w-24 h-24 rounded-full"
-            />
-          </div>
-          <h2 className="text-white text-xl font-bold">Hello User!</h2>
-        </div>
+    <div className="flex min-h-screen ">
+      {!isMobileMenuOpen && (
+        <button
+          onClick={() => setIsMobileMenuOpen(true)}
+          className="md:hidden absolute top-[8rem] left-2  p-2.5 bg-gradient-to-br from-blue-600 to-blue-900 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+          aria-label="Open menu"
+        >
+          <FiMenu className="text-sm" />
+        </button>
+      )}
 
-        {/* Navigation */}
-        <nav className="flex flex-col gap-3 relative z-10">
-          <NavLink
-            to="/"
-            className="flex items-center gap-3 px-4 py-3 rounded-lg text-white bg-white/20 backdrop-blur-sm hover:bg-white/30 transition-all duration-300 shadow-md"
-          >
-            <FiHome className="text-xl" />
-            <span className="font-medium">Home</span>
-          </NavLink>
+      {isMobileMenuOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/50 z-[70]"
+          onClick={() => setIsMobileMenuOpen(false)}
+        ></div>
+      )}
 
-          <NavLink
-            to="/#"
-            className="flex items-center gap-3 px-4 py-3 rounded-lg text-white bg-white/20 backdrop-blur-sm hover:bg-white/30 transition-all duration-300 shadow-md"
-          >
-            <FiShoppingBag className="text-xl" />
-            <span className="font-medium">Orders</span>
-          </NavLink>
-
-          <NavLink
-            to="/profile"
-            end
-            className={({ isActive }) =>
-              `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 shadow-md ${
-                isActive 
-                  ? "bg-blue-500/70 text-white backdrop-blur-sm shadow-lg scale-105" 
-                  : "text-white bg-white/20 backdrop-blur-sm hover:bg-white/30"
-              }`
-            }
-          >
-            <FiUser className="text-xl" />
-            <span className="font-medium">Profile Info</span>
-          </NavLink>
-
-          <NavLink
-            to="#"
-            className="flex items-center gap-3 px-4 py-3 rounded-lg text-white bg-white/20 backdrop-blur-sm hover:bg-white/30 transition-all duration-300 shadow-md"
-          >
-            <FiMapPin className="text-xl" />
-            <span className="font-medium">Address</span>
-          </NavLink>
-
-          <NavLink
-            to="/profile/my-products"
-            className="flex items-center gap-3 px-4 py-3 rounded-lg text-white bg-white/20 backdrop-blur-sm hover:bg-white/30 transition-all duration-300 shadow-md"
-          >
-            <FiPackage className="text-xl" />
-            <span className="font-medium">My Products</span>
-          </NavLink>
-
-          {/* Logout Button */}
+      <aside
+        className={`md:hidden fixed top-0 left-0 h-full w-[280px] bg-gradient-to-br from-[#102362] to-[#140b5b] shadow-xl overflow-y-auto z-[80] transform transition-transform duration-300 ${
+          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="p-6 relative">
           <button
-            onClick={handleLogout}
-            className="flex items-center gap-3 px-4 py-3 rounded-lg text-white bg-white/20 backdrop-blur-sm hover:bg-red-500/40 transition-all duration-300 mt-6 shadow-md border border-white/10"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="absolute top-4 right-4 z-50 p-2 text-white hover:bg-white/10 rounded-lg transition-all"
+            aria-label="Close menu"
           >
-            <FiLogOut className="text-xl" />
-            <span className="font-medium">Logout</span>
+            <FiX className="text-2xl" />
           </button>
-        </nav>
+          <SidebarContent setIsMobileMenuOpen={setIsMobileMenuOpen} />
+        </div>
       </aside>
 
-      {/* Main content */}
-      <main className="flex-1 p-8 overflow-auto">
+      <aside className="hidden md:block w-[250px] flex-shrink-0 bg-gradient-to-br from-[#102362] to-[#140b5b] p-6 shadow-xl relative overflow-hidden">
+        <SidebarContent />
+      </aside>
+
+      <main className="w-full md:flex-1 mt-12 md:mt-0   overflow-auto">
         <Outlet />
       </main>
     </div>
