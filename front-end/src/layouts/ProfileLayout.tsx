@@ -24,11 +24,11 @@ const ProfileLayout = () => {
   }, [isMobileMenuOpen]);
 
   return (
-    <div className="flex min-h-screen ">
+    <div className="flex min-h-screen  ">
       {!isMobileMenuOpen && (
         <button
           onClick={() => setIsMobileMenuOpen(true)}
-          className="md:hidden absolute top-[8rem] left-2  p-2.5 bg-gradient-to-br from-blue-600 to-blue-900 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+          className=" md:hidden absolute top-[8rem] left-2  p-2.5 bg-gradient-to-br from-blue-600 to-blue-900 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
           aria-label="Open menu"
         >
           <FiMenu className="text-sm" />
@@ -43,7 +43,7 @@ const ProfileLayout = () => {
       )}
 
       <aside
-        className={`md:hidden fixed top-0 left-0 h-full w-[280px] bg-gradient-to-br from-[#102362] to-[#140b5b] shadow-xl overflow-y-auto z-[80] transform transition-transform duration-300 ${
+        className={` md:hidden fixed top-0 left-0 h-full w-[280px] bg-gradient-to-br from-[#102362] to-[#140b5b] shadow-xl overflow-y-auto z-[80] transform transition-transform duration-300 ${
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -59,7 +59,7 @@ const ProfileLayout = () => {
         </div>
       </aside>
 
-      <aside className="hidden md:block w-[250px] flex-shrink-0 bg-gradient-to-br from-[#102362] to-[#140b5b] p-6 shadow-xl relative overflow-hidden">
+      <aside className="mt-1 mb-1 rounded-r-lg hidden md:block w-[250px] h-[] flex-shrink-0 bg-gradient-to-br from-[#102362] to-[#140b5b] p-6 shadow-xl relative overflow-hidden">
         <SidebarContent />
       </aside>
 

@@ -64,7 +64,9 @@ const Header = () => {
               <span className="absolute inset-0 z-10 bg-gradient-to-r from-blue-600 to-blue-800 transform -translate-x-full group-hover:translate-x-0 transition-all duration-500"></span>
             </button>
 
-            <button className="relative p-2 sm:p-2.5 md:p-3 rounded-full hover:bg-blue-100 transform transition hover:scale-105">
+            <button 
+            onClick={() => navigate("/cart")}
+            className="relative p-2 sm:p-2.5 md:p-3 rounded-full hover:bg-blue-100 transform transition hover:scale-105">
               <FiShoppingCart className="text-blue-800 text-xl sm:text-xl md:text-xl" />
               <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
                 2
