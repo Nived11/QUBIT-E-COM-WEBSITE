@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react";
+import { useState, type ChangeEvent } from "react";
 import logo from "../../assets/Qubit.webp";
 import { useNavigate } from "react-router-dom";
 import { FaEnvelope, FaLock } from "react-icons/fa";

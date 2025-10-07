@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from 'react';
+import { useState,type ChangeEvent } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import {
   FaUser,
