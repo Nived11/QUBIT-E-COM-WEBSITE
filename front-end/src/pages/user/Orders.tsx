@@ -30,7 +30,7 @@ const Orders = () => {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-6 md:mb-8">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-1 sm:mb-2">
+          <h1 className="text-lg md:text-2xl font-bold text-gray-900 mb-1 sm:mb-2">
             My Orders
           </h1>
           <p className="text-sm sm:text-base text-gray-600">

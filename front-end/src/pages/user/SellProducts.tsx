@@ -100,7 +100,7 @@ const SellProducts = () => {
               Manage your product inventory
             </p>
           </div>
-          <button className="h-[32px] sm:h-[40px] px-2.5 sm:px-6 bg-blue-600 hover:bg-blue-700 text-white rounded-md sm:rounded-lg flex items-center justify-center gap-1 sm:gap-2 transition-colors flex-shrink-0 text-xs sm:text-base">
+          <button className="h-[32px] sm:h-[40px] px-2.5 sm:px-6 bg-gradient-to-br from-blue-600 to-blue-800 hover:bg-blue-700 text-white rounded-md sm:rounded-lg flex items-center justify-center gap-1 sm:gap-2 transition-colors flex-shrink-0 text-xs sm:text-base">
             <Plus size={16} className="sm:w-5 sm:h-5" />
             <span className="whitespace-nowrap">Sell Product</span>
           </button>
