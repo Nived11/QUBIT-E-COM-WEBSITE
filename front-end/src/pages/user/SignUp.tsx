@@ -11,6 +11,7 @@ import {
   FaStore,
 } from 'react-icons/fa';
 import logo from '../../assets/Qubit.webp';
+import loginbg from '../../assets/loginbg.png';
 import { useNavigate } from 'react-router-dom';
 
 interface FormData {
@@ -95,13 +96,14 @@ const SignUp: React.FC = () => {
       {/* Left Section */}
       <div className="lg:w-1/2 relative flex flex-col items-center justify-center p-6 sm:p-8 lg:p-12 lg:min-h-screen overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-100"
+          className="absolute inset-0 bg-cover bg-center opacity-100  brightness-100 hue-rotate-[18deg]" 
           style={{
-            backgroundImage:
-              'url("https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=1024x1024&w=0&k=20&c=z8_rWaI8x4zApNEEG9DnWlGXyDIXe-OmsAyQ5fGPVV8=")',
+            backgroundImage: `url(${loginbg})`,
           }}
-        />
-        <div className="absolute inset-0 bg-black opacity-60" />
+        ></div>
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-black opacity-50"></div>
 
         {/* Wavy Divider */}
         <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-24 z-20">
@@ -114,14 +116,14 @@ const SignUp: React.FC = () => {
             <path
               d="M0 0 
                  C20 30, 40 40, 15 80
-                 C-5 110, 25 140, 25 180
+                 C-5 110, 25 160, 25 180
                  C-10 220, 32 250, 5 290
-                 C-15 330, 35 390, 8 400
-                 C-18 450, 45 470, 10 510
-                 C-12 550, 32 580, 6 620
+                 C-14 330, 35 390, 8 400
+                 C-18 460, 45 470, 10 520
+                 C-12 550, 32 600, 6 620
                  C-16 660, 38 690, 10 730
-                 C-14 770, 35 870, 8 840
-                 C-10 880, 30 910, 5 950
+                 C-14 770, 35 870, 10 840
+                 C-10 880, 30 900, 5 950
                  C-8 980, 20 995, 0 1000
                  L100 1000 L100 0 Z"
               fill="white"
@@ -155,10 +157,10 @@ const SignUp: React.FC = () => {
       <div className="flex-1 flex items-center justify-center p-4 sm:p-4 lg:py-4 bg-white">
         <div className="w-full max-w-xl lg:overflow-y-auto lg:max-h-screen py-8 px-2 bg-white scrollbar-hide">
           <div className="mb-4 lg:mb-6 text-center lg:text-left">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-1">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-900 mb-1">
               Create Account
             </h1>
-            <p className="text-sm sm:text-base text-gray-700">
+            <p className="text-sm sm:text-base text-blue-900">
               Sign up to get started
             </p>
           </div>
@@ -166,7 +168,7 @@ const SignUp: React.FC = () => {
           <div className="space-y-3 lg:space-y-3.5">
             {/* Account Type */}
             <div>
-              <label className="block text-xs sm:text-sm font-medium text-gray-800 mb-2">
+              <label className="block text-xs sm:text-sm font-medium text-blue-900 mb-2">
                 Account Type
               </label>
               <div className="flex gap-3">
@@ -175,19 +177,19 @@ const SignUp: React.FC = () => {
                   onClick={() => setAccountType('buyer')}
                   className={`flex-1 py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all text-sm sm:text-base ${
                     accountType === 'buyer'
-                      ? 'bg-blue-700 text-white shadow-md'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'bg-blue-800 text-white shadow-md'
+                      : 'bg-gray-300 text-blue-900 hover:bg-gray-400 hover:text-white'
                   }`}
                 >
-                  <FaShoppingBag /> Buyer
+                  <FaShoppingBag/> Buyer
                 </button>
                 <button
                   type="button"
                   onClick={() => setAccountType('seller')}
                   className={`flex-1 py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all text-sm sm:text-base ${
                     accountType === 'seller'
-                      ? 'bg-blue-700 text-white shadow-md'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'bg-blue-800 text-white shadow-md'
+                      : 'bg-gray-300 text-blue-900 hover:bg-gray-400 hover:text-white'
                   }`}
                 >
                   <FaStore /> Seller
@@ -198,7 +200,7 @@ const SignUp: React.FC = () => {
             {/* Name Fields */}
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="relative">
-                <FaUser className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600" />
+                <FaUser className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-900" />
                 <input
                   type="text"
                   name="firstName"
@@ -209,7 +211,7 @@ const SignUp: React.FC = () => {
                 />
               </div>
               <div className="relative">
-                <FaUser className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600" />
+                <FaUser className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-900" />
                 <input
                   type="text"
                   name="lastName"
@@ -223,7 +225,7 @@ const SignUp: React.FC = () => {
 
             {/* Email */}
             <div className="relative">
-              <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600" />
+              <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-900" />
               <input
                 type="email"
                 name="email"
@@ -236,7 +238,7 @@ const SignUp: React.FC = () => {
 
             {/* Phone */}
             <div className="relative">
-              <FaPhone className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600" />
+              <FaPhone className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-900" />
               <input
                 type="tel"
                 name="phone"
@@ -250,7 +252,7 @@ const SignUp: React.FC = () => {
             {/* Passwords */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
               <div className="relative">
-                <FaLock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600" />
+                <FaLock className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-900" />
                 <input
                   type={showPassword ? 'text' : 'password'}
                   name="password"
@@ -262,28 +264,28 @@ const SignUp: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-900"
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
               </div>
 
               <div className="relative">
-                <FaLock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600" />
+                <FaLock className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-900" />
                 <input
                   type={showConfirmPassword ? 'text' : 'password'}
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   placeholder="Confirm password"
-                  className="w-full pl-10 pr-10 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-sm outline-none"
+                  className="w-full pl-10 pr-10 py-2.5 border border-gray-400 rounded-lg focus:ring-2 focus:ring-blue-500 text-sm outline-none"
                 />
                 <button
                   type="button"
                   onClick={() =>
                     setShowConfirmPassword(!showConfirmPassword)
                   }
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-900"
                 >
                   {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
@@ -294,24 +296,24 @@ const SignUp: React.FC = () => {
             {accountType === 'seller' && (
               <>
                 <div className="relative">
-                  <FaBuilding className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                  <FaBuilding className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-900" />
                   <input
                     type="text"
                     name="companyName"
                     value={formData.companyName}
                     onChange={handleChange}
                     placeholder="Company Name"
-                    className="w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-sm outline-none"
+                    className="w-full pl-10 pr-3 py-2.5 border border-gray-400 rounded-lg focus:ring-2 focus:ring-blue-500 text-sm outline-none"
                   />
                 </div>
 
                 <div className="relative">
-                  <FaFileAlt className="absolute left-3 top-3 text-gray-400" />
+                  <FaFileAlt className="absolute left-3 top-3 text-blue-900" />
                   <input
                     type="file"
                     name="proofDocument"
                     onChange={handleChange}
-                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-sm outline-none file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                    className="w-full pl-10 pr-3 py-2 border border-gray-400 rounded-lg focus:ring-2 focus:ring-blue-500 text-sm outline-none file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
                   />
                 </div>
               </>
@@ -324,9 +326,9 @@ const SignUp: React.FC = () => {
                 name="termsAccepted"
                 checked={formData.termsAccepted}
                 onChange={handleChange}
-                className="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                className="mt-1 w-4 h-4 text-blue-800 border-gray-400 rounded focus:ring-blue-800 cursor-pointer"
               />
-              <label className="text-xs sm:text-sm text-gray-600">
+              <label className="text-xs sm:text-sm text-gray-800">
                 I agree to the{' '}
                 <button
                   type="button"
