@@ -26,7 +26,7 @@ interface FormData {
   termsAccepted: boolean;
 }
 
-const SignUp: React.FC = () => {
+const SignUp = () => {
   const [accountType, setAccountType] = useState<'buyer' | 'seller'>('buyer');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);

@@ -13,6 +13,7 @@ const ProductList = () => {
         <h1 className="text-lg sm:text-2xl font-bold text-blue-800">Latest Products</h1>
         
         <FilterProduct/>
+
       </div>
 
       <div className="h-auto w-full py-4">
@@ -36,9 +37,7 @@ const ProductList = () => {
             <span className="inline-block transform transition-transform group-hover:translate-x-1 animation-delay-75">&gt;</span>
           </span>
         </Link>
-      </div>
-
-     
+      </div>   
     </div>
   );
 };
