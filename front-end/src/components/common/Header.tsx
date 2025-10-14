@@ -9,7 +9,6 @@ const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event:any) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -22,13 +21,11 @@ const Header = () => {
   }, []);
 
   const handleLogout = () => {
-    // Add your logout logic here
     console.log("Logging out...");
     setIsDropdownOpen(false);
   };
 
   const handleProfile = () => {
-    // Navigate to profile page
     navigate("/profile");
     setIsDropdownOpen(false);
   };

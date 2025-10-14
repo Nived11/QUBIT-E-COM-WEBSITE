@@ -16,7 +16,6 @@ export default function Header() {
                    transition-all duration-500 ease-in-out
                    transform hover:scale-110"
       >
-        {/* Sun icon (show when dark mode is ON, to switch back to light) */}
         <Sun
           className={`absolute w-5 h-5 text-yellow-400 transition-all duration-500 ${
             darkMode
@@ -24,8 +23,6 @@ export default function Header() {
               : "opacity-0 scale-50 rotate-90"
           }`}
         />
-
-        {/* Moon icon (show when light mode is ON, to switch to dark) */}
         <Moon
           className={`absolute w-5 h-5 text-blue-500 transition-all duration-500 ${
             darkMode
@@ -33,8 +30,6 @@ export default function Header() {
               : "opacity-100 scale-100 rotate-0"
           }`}
         />
-
-        {/* Animated background glow */}
         <span
           className={`absolute inset-0 rounded-full blur-lg transition-all duration-700 ${
             darkMode
