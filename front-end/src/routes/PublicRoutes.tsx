@@ -28,6 +28,7 @@ const PublicRoutes = () => {
       {/* Login is outside PublicLayout */}
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
+
     </>
   );
 };
