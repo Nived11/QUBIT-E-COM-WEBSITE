@@ -2,24 +2,34 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import env from "dotenv";
+import authRoutes from "./routes/auth.routes";
+import otpRoutes from "./routes/otp.routes";
+import { authenticateUser } from "./middlewares/authMiddleware";
+
 env.config();
-// import authRoutes from "./routes/auth.routes";
-// import productRoutes from "./routes/product.routes";
 
 const app = express();
 
-app.use(cors({
-  origin: process.env.CORS_ORIGIN,
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      process.env.FRONTEND_URL!,
+    ],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 app.use(cookieParser());
 
-// Routes
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-})
-// app.use("/api/auth", authRoutes);
-// app.use("/api/products", productRoutes);
+
+app.use("/api/auth", authRoutes);
+app.use("/api/otp", otpRoutes);
+
+app.get("/", authenticateUser, async (req, res) => {
+  res.json({ message: "Access granted", userId: (req as any).userId });
+});
+
 
 export default app;

@@ -10,7 +10,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <ScrollToTop />
-        <Toaster position="top-right" />
+        <Toaster position="top-center" />
         <AppRoutes />
       </BrowserRouter>
     </Provider>
