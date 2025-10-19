@@ -1,12 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: ['class'],
   content: [
-    "./index.html",          
-    "./src/**/*.{js,ts,jsx,tsx}"  
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
-   darkMode: 'class',
+  prefix: "",
   theme: {
-    extend: {},
+    
   },
-   plugins: [require("tailwind-scrollbar-hide")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("tailwind-scrollbar-hide")
+  ],
 }

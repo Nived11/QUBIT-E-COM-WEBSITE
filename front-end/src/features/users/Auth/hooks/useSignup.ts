@@ -1,8 +1,9 @@
 import { useState, type ChangeEvent } from 'react';
-import toast from 'react-hot-toast';
+import { toast } from "sonner"
 import api from '../../../../api/axios';
 import { useNavigate } from 'react-router-dom';
 import { extractErrorMessages } from '../../../../utils/helpers/extractErrorMessages';
+import { validateSignup, type FormErrors } from "../utils/Validators";
 
 interface FormData {
   name: string;
@@ -15,25 +16,29 @@ interface FormData {
   termsAccepted: boolean;
 }
 
+const initialFormData: FormData = {
+  name: '',
+  email: '',
+  phone: '',
+  password: '',
+  confirmPassword: '',
+  companyName: '',
+  proofDocument: null,
+  termsAccepted: false,
+};
+
 export const useSignup = () => {
   const [accountType, setAccountType] = useState<'buyer' | 'seller'>('buyer');
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    phone: '',
-    password: '',
-    confirmPassword: '',
-    companyName: '',
-    proofDocument: null,
-    termsAccepted: false,
-  });
+  const [formData, setFormData] = useState<FormData>(initialFormData);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<FormErrors>({});
 
   const navigate = useNavigate();
 
   const [otpEmail, setOtpEmail] = useState<string | null>(null);
+  const [otpExpiresAt, setOtpExpiresAt] = useState<string | null>(null);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked, files } = e.target;
@@ -47,27 +52,20 @@ export const useSignup = () => {
           : value,
     }));
   };
+  const handlePhoneChange = (phone: string) => {
+  setFormData((prev) => ({ ...prev, phone }));
+};
+
 
   const handleSubmit = async () => {
-    if (!formData.name || !formData.email || !formData.phone || !formData.password || !formData.confirmPassword) {
-      toast.error('Please fill all required fields');
-      return;
-    }
+    const validationErrors = validateSignup(formData, accountType);
+  if (Object.keys(validationErrors).length > 0) {
+    setErrors(validationErrors);
+    toast.error("Please fix the errors in the form");
+    return;
+  }
 
-    if (formData.password !== formData.confirmPassword) {
-      toast.error('Passwords do not match');
-      return;
-    }
-
-    if (!formData.termsAccepted) {
-      toast.error('Please accept terms and conditions');
-      return;
-    }
-
-    if (accountType === 'seller' && (!formData.companyName || !formData.proofDocument)) {
-      toast.error('Please fill company details and upload proof document');
-      return;
-    }
+  setErrors({}); 
 
     try {
       setLoading(true);
@@ -80,20 +78,24 @@ export const useSignup = () => {
       payload.append('userType', accountType);
       if (accountType === "seller") {
         payload.append("companyName", formData.companyName);
-      if (formData.proofDocument) {
-         payload.append("companyProof", formData.proofDocument);
-    }
-}
+        if (formData.proofDocument) {
+          payload.append("companyProof", formData.proofDocument);
+        }
+      }
 
       payload.append('purpose', 'signup');
 
-      await api.post('/otp/generate-otp', payload, {
+      const response = await api.post('/otp/generate-otp', payload, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
       toast.success('OTP sent to email. Please verify.');
       
-      setOtpEmail(formData.email); 
+      setOtpEmail(formData.email);
+      // Store the expiresAt from backend response
+      if (response.data.expiresAt) {
+        setOtpExpiresAt(response.data.expiresAt);
+      }
 
     } catch (err: unknown) {
       toast.error(extractErrorMessages(err));
@@ -106,6 +108,23 @@ export const useSignup = () => {
     navigate('/login');
   };
 
+  const handleOtpVerified = () => {
+    // Clear all form data
+    setFormData(initialFormData);
+    setOtpEmail(null);
+    setOtpExpiresAt(null);
+    setAccountType('buyer');
+    setTimeout(() => {
+      navigate('/login');
+    }, 500);
+  };
+
+  // Handle OTP modal close without verification
+  const handleOtpClose = () => {
+    setOtpEmail(null);
+    setOtpExpiresAt(null);
+  };
+
   return {
     accountType,
     setAccountType,
@@ -116,9 +135,13 @@ export const useSignup = () => {
     showConfirmPassword,
     setShowConfirmPassword,
     loading,
+    errors,
     handleSubmit,
+    handlePhoneChange,
     handleSignIn,
     otpEmail,
-    setOtpEmail,
+    otpExpiresAt,
+    handleOtpVerified,
+    handleOtpClose,
   };
 };

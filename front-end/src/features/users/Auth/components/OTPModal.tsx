@@ -1,82 +1,41 @@
-import { useEffect, useRef, useState } from "react";
-import toast from "react-hot-toast";
-import api from "../../../../api/axios";
+import { useEffect } from "react";
+import { useOtp } from "../hooks/useOtp";
+import { Spinner } from "@/components/ui/spinner";
+
 
 interface OTPModalProps {
   email: string;
   purpose: "signup" | "forgot-password";
+  expiresAt?: string | null;
   onClose: () => void;
   onVerified: () => void;
 }
 
-const OTPModal = ({ email, purpose, onClose, onVerified }: OTPModalProps) => {
-  const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
-  const [loading, setLoading] = useState(false);
-  const [timer, setTimer] = useState(60);
-  const [resendAllowed, setResendAllowed] = useState(false);
+const OTPModal = ({ email, purpose, expiresAt, onClose, onVerified }: OTPModalProps) => {
+  const {
+    otp,
+    loading,
+    timer,
+    resendAllowed,
+    inputRefs,
+    handleChange,
+    handleKeyDown,
+    verifyOtp,
+    resendOtp,
+    setInitialTimer,
+  } = useOtp(email, purpose);
 
-  const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
-
-  // Countdown timer
+  // Set initial timer from backend expiresAt
   useEffect(() => {
-    if (timer <= 0) {
-      setResendAllowed(true);
-      return;
+    if (expiresAt) {
+      setInitialTimer(expiresAt);
     }
-    const interval = setInterval(() => {
-      setTimer((prev) => prev - 1);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [timer]);
+  }, [expiresAt]);
 
-  const handleChange = (value: string, index: number) => {
-    if (!/^\d?$/.test(value)) return;
-    const newOtp = [...otp];
-    newOtp[index] = value;
-    setOtp(newOtp);
-
-    if (value && index < 5) {
-      inputRefs.current[index + 1]?.focus();
-    }
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
-    if (e.key === "Backspace" && !otp[index] && index > 0) {
-      inputRefs.current[index - 1]?.focus();
-    }
-  };
-
-  const handleVerify = async () => {
-    const otpCode = otp.join("");
-    if (otpCode.length < 6) return toast.error("Enter 6-digit OTP");
-
-    try {
-      setLoading(true);
-      await api.post("/otp/verify-otp", { email, otp: otpCode, purpose });
-      toast.success("OTP verified successfully!");
-      onVerified();
-      onClose();
-    } catch (err: any) {
-      toast.error(err?.response?.data?.message || "Failed to verify OTP");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleResend = async () => {
-    try {
-      setLoading(true);
-      await api.post("/otp/generate-otp", { email, purpose });
-      toast.success("OTP resent to email!");
-      setTimer(60);
-      setResendAllowed(false);
-      setOtp(Array(6).fill(""));
-      inputRefs.current[0]?.focus();
-    } catch (err: any) {
-      toast.error(err?.response?.data?.message || "Failed to resend OTP");
-    } finally {
-      setLoading(false);
-    }
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, "0")}`;
   };
 
   return (
@@ -103,21 +62,31 @@ const OTPModal = ({ email, purpose, onClose, onVerified }: OTPModalProps) => {
         </div>
 
         <div className="mb-4 text-sm text-gray-800">
-          {timer > 0 ? `OTP expires in ${timer}s` : "OTP expired"}
+          {timer > 0 ? (
+            <>OTP expires in <span className="font-semibold text-blue-900">{formatTime(timer)}</span></>
+          ) : (
+            <span className="text-red-600 font-medium">OTP expired</span>
+          )}
         </div>
 
         <button
-          onClick={handleVerify}
+          onClick={() => verifyOtp(onVerified, onClose)}
           disabled={loading}
-          className={`w-full py-2.5 rounded-lg text-white font-semibold ${
-            loading ? "bg-blue-400" : "bg-blue-900 hover:bg-blue-800"
+              className={`w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2.5 sm:py-3 rounded-lg transition-colors shadow-sm text-sm sm:text-base flex items-center justify-center gap-2 ${
+                loading ? "opacity-70 cursor-not-allowed" : ""
           }`}
         >
-          {loading ? "Verifying..." : "Verify OTP"}
+          {loading ?
+          <>
+                  <Spinner />
+                  <span>Verifying</span>
+                </>:
+          "Verify OTP"
+        }
         </button>
 
         <button
-          onClick={handleResend}
+          onClick={resendOtp}
           disabled={!resendAllowed || loading}
           className="mt-2 w-full py-2 text-sm text-blue-600 hover:underline disabled:text-gray-400"
         >

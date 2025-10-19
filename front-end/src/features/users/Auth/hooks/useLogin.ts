@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginSuccess } from "../../../../slices/authSlice";
 import api from "../../../../api/axios";
-import toast from "react-hot-toast";
+import { toast } from "sonner"
 import { extractErrorMessages } from "../../../../utils/helpers/extractErrorMessages";
 
 interface FormData {
